@@ -1,34 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Dashboard from '@/pages/dashboard/Analysis'
-import NotFound from '@/pages/exception/404'
-import NotPermit from '@/pages/exception/403'
-import ServerError from '@/pages/exception/500'
 import PageView from '@/layouts/PageView'
 import RouteView from '@/layouts/RouteView'
 import MenuView from '@/layouts/MenuView'
-import BasicForm from '@/pages/form/BasicForm'
-import StepForm from '@/pages/form/stepForm/StepForm'
-import AdvancedForm from '@/pages/form/advancedForm/AdvancedForm'
-import Success from '@/pages/result/Success'
-import Error from '@/pages/result/Error'
-import QueryList from '@/pages/list/QueryList'
-import StandardList from '@/pages/list/StandardList'
-import CardList from '@/pages/list/CardList'
-import SearchLayout from '@/pages/list/search/SearchLayout'
-import ArticleList from '@/pages/list/search/ArticleList'
-import ApplicationList from '@/pages/list/search/ApplicationList'
-import ProjectList from '@/pages/list/search/ProjectList'
-import WorkPlace from '@/pages/dashboard/WorkPlace'
 import Login from '@/pages/login/Login'
-import BasicDetail from '@/pages/detail/BasicDetail'
-import AdvancedDetail from '@/pages/detail/AdvancedDetail'
-import TaskCard from '@/pages/components/TaskCard'
-import ColorBox from '@/pages/components/Palette'
 
 Vue.use(Router)
 
-// TODO: 此文件的路由好像没起作用
 export default new Router({
   routes: [
     {
@@ -49,204 +27,135 @@ export default new Router({
           path: '/home',
           name: '首页测试',
           component: RouteView,
-          icon: 'dashboard',
+          icon: 'tool',
           children: [
+            // {
+            //   path: '/home/workplace',
+            //   name: '工作台',
+            //   component: () => import('@/pages/dashboard/WorkPlace'),
+            //   icon: 'none'
+            // },
             {
-              path: '/home/workplace',
-              name: '工作台',
-              component: WorkPlace,
+              path: '/home/my-home',
+              name: '我的首页',
+              component: () => import('@/pages/home/MyHome'),
               icon: 'none'
             },
             {
               path: '/home/analysis',
-              name: '分析页',
-              component: Dashboard,
-              icon: 'none'
-            }
-          ]
-        },
-        {
-          path: '/dashboard',
-          name: 'dashboard',
-          component: RouteView,
-          icon: 'dashboard',
-          children: [
-            {
-              path: '/dashboard/workplace',
-              name: '工作台',
-              component: WorkPlace,
+              name: '经营分析',
+              component: () => import('@/pages/home/Analysis'),
               icon: 'none'
             },
             {
-              path: '/dashboard/analysis',
-              name: '分析页',
-              component: Dashboard,
+              path: '/home/message',
+              name: '我的通知',
+              component: () => import('@/pages/home/Message'),
+              icon: 'none'
+            },
+            {
+              path: '/home/change-pwd',
+              name: '修改密码',
+              component: () => import('@/pages/home/ChangePWD'),
               icon: 'none'
             }
           ]
         },
         {
-          path: '/form',
-          name: '表单页',
+          path: '/goods-manage',
+          name: '商品管理',
           component: PageView,
-          icon: 'form',
+          icon: 'bars',
           children: [
             {
-              path: '/form/basic',
-              name: '基础表单',
-              component: BasicForm,
+              path: '/goods-manage/goods-list',
+              name: '商品列表',
+              component: () => import('@/pages/goods/GoodsList'),
               icon: 'none'
             },
             {
-              path: '/form/step',
-              name: '分步表单',
-              component: StepForm,
+              path: '/goods-manage/publish-goods',
+              name: '发布商品',
+              component: () => import('@/pages/goods/publishProduct/Product'),
               icon: 'none'
             },
             {
-              path: '/form/advanced',
-              name: '高级表单',
-              component: AdvancedForm,
+              path: '/goods-manage/stock-warn',
+              name: '库存预警',
+              component: () => import('@/pages/goods/StockWarn'),
               icon: 'none'
             }
           ]
         },
         {
-          path: '/list',
-          name: '列表页',
+          path: '/order-manage',
+          name: '订单管理',
           component: PageView,
-          icon: 'table',
+          icon: 'bars',
           children: [
             {
-              path: '/list/query',
-              name: '查询表格',
-              component: QueryList,
+              path: '/order-manage/order-list',
+              name: '订单列表',
+              component: () => import('@/pages/orders/OrderList'),
               icon: 'none'
             },
             {
-              path: '/list/primary',
-              name: '标准列表',
-              component: StandardList,
+              path: '/order-manage/publish-goods',
+              name: '评价列表',
+              component: () => import('@/pages/orders/Evaluate'),
               icon: 'none'
             },
             {
-              path: '/list/card',
-              name: '卡片列表',
-              component: CardList,
+              path: '/order-manage/refund-list',
+              name: '退款列表',
+              component: () => import('@/pages/orders/Refund'),
               icon: 'none'
-            },
-            {
-              path: '/list/search',
-              name: '搜索列表',
-              component: SearchLayout,
-              icon: 'none',
-              children: [
-                {
-                  path: '/list/search/article',
-                  name: '文章',
-                  component: ArticleList,
-                  icon: 'none'
-                },
-                {
-                  path: '/list/search/application',
-                  name: '应用',
-                  component: ApplicationList,
-                  icon: 'none'
-                },
-                {
-                  path: '/list/search/project',
-                  name: '项目',
-                  component: ProjectList,
-                  icon: 'none'
-                }
-              ]
             }
           ]
         },
         {
-          path: '/detail',
-          name: '详情页',
-          icon: 'profile',
-          component: RouteView,
-          children: [
-            {
-              path: '/detail/basic',
-              name: '基础详情页',
-              icon: 'none',
-              component: BasicDetail
-            },
-            {
-              path: '/detail/advanced',
-              name: '高级详情页',
-              icon: 'none',
-              component: AdvancedDetail
-            }
-          ]
-        },
-        {
-          path: '/result',
-          name: '结果页',
-          icon: 'check-circle-o',
+          path: '/shop-manage',
+          name: '店铺管理',
           component: PageView,
+          icon: 'bars',
           children: [
             {
-              path: '/result/success',
-              name: '成功',
-              icon: 'none',
-              component: Success
+              path: '/shop-manage/shop-decoration',
+              name: '店铺装修',
+              component: () => import('@/pages/shop-manage/ShopDecoration'),
+              icon: 'none'
             },
             {
-              path: '/result/error',
-              name: '失败',
-              icon: 'none',
-              component: Error
+              path: '/shop-manage/shop-coupon',
+              name: '优惠券',
+              component: () => import('@/pages/shop-manage/ShopCoupon'),
+              icon: 'none'
+            },
+            {
+              path: '/shop-manage/product-discount',
+              name: '商品促销',
+              component: () => import('@/pages/shop-manage/ShopDiscount'),
+              icon: 'none'
+            },
+            {
+              path: '/shop-manage/shop-freight',
+              name: '运费管理',
+              component: () => import('@/pages/shop-manage/ShopFreight'),
+              icon: 'none'
             }
           ]
         },
         {
-          path: '/exception',
-          name: '异常页',
-          icon: 'warning',
-          component: RouteView,
-          children: [
-            {
-              path: '/exception/404',
-              name: '404',
-              icon: 'none',
-              component: NotFound
-            },
-            {
-              path: '/exception/403',
-              name: '403',
-              icon: 'none',
-              component: NotPermit
-            },
-            {
-              path: '/exception/500',
-              name: '500',
-              icon: 'none',
-              component: ServerError
-            }
-          ]
-        },
-        {
-          path: '/pages',
-          redirect: '/pages/taskcard',
-          name: '小组件',
-          icon: 'appstore-o',
+          path: '/about-us',
+          name: '关于我们',
           component: PageView,
+          icon: 'bars',
           children: [
             {
-              path: '/pages/taskcard',
-              name: '任务卡片',
-              icon: 'none',
-              component: TaskCard
-            },
-            {
-              path: '/pages/palette',
-              name: '颜色复选框',
-              icon: 'none',
-              component: ColorBox
+              path: '/about-us/help',
+              name: '帮助中心',
+              component: () => import('@/pages/about/AboutUs'),
+              icon: 'none'
             }
           ]
         }

@@ -4,8 +4,8 @@ export default {
     isMobile: false,
     theme: 'dark',
     layout: 'side',
-    systemName: 'Vue Antd Admin',
-    copyright: '2018 ICZER 工作室出品',
+    systemName: '欧亚商城 商家端',
+    copyright: '2018 NLE 出品',
     footerLinks: [
       {link: 'https://pro.ant.design', name: 'Pro首页'},
       {link: 'https://github.com/iczer/vue-antd-admin', icon: 'github'},

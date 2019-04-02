@@ -76,6 +76,7 @@ export default {
     }
   },
   beforeCreate () {
+    // 关键步骤，将菜单选项放入左侧布局中
     menuData = this.$router.options.routes.find((item) => item.path === '/').children
   }
 }
