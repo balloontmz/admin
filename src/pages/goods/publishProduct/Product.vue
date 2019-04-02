@@ -19,7 +19,7 @@ import Step2 from './Step2'
 import Step3 from './Step3'
 
 export default {
-  name: 'StepForm',
+  name: 'Product',
   components: {Step1, Step2, Step3},
   data () {
     return {

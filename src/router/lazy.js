@@ -24,100 +24,138 @@ export default new Router({
       invisible: true,
       children: [
         {
-          path: '/dashboard',
-          name: 'dashboard',
+          path: '/home',
+          name: '首页测试',
           component: RouteView,
-          icon: 'dashboard',
+          icon: 'tool',
           children: [
+            // {
+            //   path: '/home/workplace',
+            //   name: '工作台',
+            //   component: () => import('@/pages/dashboard/WorkPlace'),
+            //   icon: 'none'
+            // },
             {
-              path: '/dashboard/workplace',
-              name: '工作台',
-              component: () => import('@/pages/dashboard/WorkPlace'),
+              path: '/home/my-home',
+              name: '我的首页',
+              component: () => import('@/pages/home/MyHome'),
               icon: 'none'
             },
             {
-              path: '/dashboard/analysis',
-              name: '分析页',
-              component: () => import('@/pages/dashboard/Analysis'),
+              path: '/home/analysis',
+              name: '经营分析',
+              component: () => import('@/pages/home/Analysis'),
+              icon: 'none'
+            },
+            {
+              path: '/home/message',
+              name: '我的通知',
+              component: () => import('@/pages/home/Message'),
+              icon: 'none'
+            },
+            {
+              path: '/home/change-pwd',
+              name: '修改密码',
+              component: () => import('@/pages/home/ChangePWD'),
               icon: 'none'
             }
           ]
         },
         {
-          path: '/form',
-          name: '表单页',
+          path: '/goods-manage',
+          name: '商品管理',
           component: PageView,
-          icon: 'form',
+          icon: 'bars',
           children: [
             {
-              path: '/form/basic',
-              name: '基础表单',
-              component: () => import('@/pages/form/BasicForm'),
+              path: '/goods-manage/goods-list',
+              name: '商品列表',
+              component: () => import('@/pages/goods/GoodsList'),
               icon: 'none'
             },
             {
-              path: '/form/step',
-              name: '分步表单',
-              component: () => import('@/pages/form/stepForm/StepForm'),
+              path: '/goods-manage/publish-goods',
+              name: '发布商品',
+              component: () => import('@/pages/goods/publishProduct/Product'),
               icon: 'none'
             },
             {
-              path: '/form/advanced',
-              name: '高级表单',
-              component: () => import('@/pages/form/advancedForm/AdvancedForm'),
+              path: '/goods-manage/stock-warn',
+              name: '库存预警',
+              component: () => import('@/pages/goods/StockWarn'),
               icon: 'none'
             }
           ]
         },
         {
-          path: '/list',
-          name: '列表页',
+          path: '/order-manage',
+          name: '订单管理',
           component: PageView,
-          icon: 'table',
+          icon: 'bars',
           children: [
             {
-              path: '/list/query',
-              name: '查询表格',
-              component: () => import('@/pages/list/QueryList'),
+              path: '/order-manage/order-list',
+              name: '订单列表',
+              component: () => import('@/pages/orders/OrderList'),
               icon: 'none'
             },
             {
-              path: '/list/primary',
-              name: '标准列表',
-              component: () => import('@/pages/list/StandardList'),
+              path: '/order-manage/publish-goods',
+              name: '评价列表',
+              component: () => import('@/pages/orders/Evaluate'),
               icon: 'none'
             },
             {
-              path: '/list/card',
-              name: '卡片列表',
-              component: () => import('@/pages/list/CardList'),
+              path: '/order-manage/refund-list',
+              name: '退款列表',
+              component: () => import('@/pages/orders/Refund'),
+              icon: 'none'
+            }
+          ]
+        },
+        {
+          path: '/shop-manage',
+          name: '店铺管理',
+          component: PageView,
+          icon: 'bars',
+          children: [
+            {
+              path: '/shop-manage/shop-decoration',
+              name: '店铺装修',
+              component: () => import('@/pages/shop-manage/ShopDecoration'),
               icon: 'none'
             },
             {
-              path: '/list/search',
-              name: '搜索列表',
-              component: () => import('@/pages/list/search/SearchLayout'),
-              icon: 'none',
-              children: [
-                {
-                  path: '/list/search/article',
-                  name: '文章',
-                  component: () => import('@/pages/list/search/ArticleList'),
-                  icon: 'none'
-                },
-                {
-                  path: '/list/search/application',
-                  name: '应用',
-                  component: () => import('@/pages/list/search/ApplicationList'),
-                  icon: 'none'
-                },
-                {
-                  path: '/list/search/project',
-                  name: '项目',
-                  component: () => import('@/pages/list/search/ProjectList'),
-                  icon: 'none'
-                }
-              ]
+              path: '/shop-manage/shop-coupon',
+              name: '优惠券',
+              component: () => import('@/pages/shop-manage/ShopCoupon'),
+              icon: 'none'
+            },
+            {
+              path: '/shop-manage/product-discount',
+              name: '商品促销',
+              component: () => import('@/pages/shop-manage/ShopDiscount'),
+              icon: 'none'
+            },
+            {
+              path: '/shop-manage/shop-freight',
+              name: '运费管理',
+              component: () => import('@/pages/shop-manage/ShopFreight'),
+              icon: 'none'
+            }
+          ]
+        },
+        {
+          path: '/about-us',
+          name: '关于我们',
+          component: PageView,
+          icon: 'bars',
+          children: [
+            {
+              path: '/about-us/help',
+              name: '帮助中心',
+              component: () => import('@/pages/about/AboutUs'),
+              icon: 'none'
             }
           ]
         },

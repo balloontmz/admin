@@ -28,6 +28,7 @@ import ColorBox from '@/pages/components/Palette'
 
 Vue.use(Router)
 
+// TODO: 此文件的路由好像没起作用
 export default new Router({
   routes: [
     {
@@ -44,6 +45,26 @@ export default new Router({
       icon: 'none',
       invisible: true,
       children: [
+        {
+          path: '/home',
+          name: '首页测试',
+          component: RouteView,
+          icon: 'dashboard',
+          children: [
+            {
+              path: '/home/workplace',
+              name: '工作台',
+              component: WorkPlace,
+              icon: 'none'
+            },
+            {
+              path: '/home/analysis',
+              name: '分析页',
+              component: Dashboard,
+              icon: 'none'
+            }
+          ]
+        },
         {
           path: '/dashboard',
           name: 'dashboard',

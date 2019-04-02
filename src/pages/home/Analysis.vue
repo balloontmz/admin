@@ -1,5 +1,9 @@
 <template>
   <div>
+    <!-- 这是一个头部布局 -->
+    <page-layout>
+    </page-layout>
+
     <a-row style="margin: 0 -12px">
       <a-col :sm="24" :md="12" :xl="6" style="padding: 12px 12px 24px;">
         <chart-card title="总销售额" total="￥ 189,345">
@@ -50,39 +54,7 @@
         </chart-card>
       </a-col>
     </a-row>
-    <a-card :bordered="false" :body-style="{padding: '24px'}">
-      <div class="salesCard">
-        <a-tabs default-active-key="1" size="large" :tab-bar-style="{marginBottom: '24px', paddingLeft: '16px'}">
-          <div class="extra-wrap" slot="tabBarExtraContent">
-            <div class="extra-item">
-              <a>今日</a>
-              <a>本周</a>
-              <a>本月</a>
-              <a>本年</a>
-            </div>
-            <a-range-picker :style="{width: '256px'}"></a-range-picker>
-          </div>
-          <a-tab-pane loading="true" tab="销售额" key="1">
-            <a-row>
-              <a-col :xl="16" :lg="12" :md="12" :sm="24" :xs="24">
-                <bar title="销售额趋势" />
-              </a-col>
-              <a-col :xl="8" :lg="12" :md="12" :sm="24" :xs="24">
-                <ranking-list title="门店销售排行榜" :list="rankList"/>
-              </a-col>
-            </a-row>
-          </a-tab-pane>
-          <a-tab-pane tab="访问量" key="2"><a-row>
-            <a-col :xl="16" :lg="12" :md="12" :sm="24" :xs="24">
-              <bar title="销售额趋势" />
-            </a-col>
-            <a-col :xl="8" :lg="12" :md="12" :sm="24" :xs="24">
-              <ranking-list title="门店销售排行榜" :list="rankList"/>
-            </a-col>
-          </a-row></a-tab-pane>
-        </a-tabs>
-      </div>
-    </a-card>
+
     <a-row style="margin: 0 -12px">
       <a-col style="padding: 0 12px" :xl="12" :lg="24" :md="24" :sm="24" :xs="24">
         <a-card :bordered="false" style="margin-top: 24px" title="热门搜索">
@@ -111,6 +83,7 @@ import RankingList from '../../components/chart/RankingList'
 import HotSearch from '../../components/analysis/HotSearch'
 import SalesData from '../../components/analysis/SalesData'
 import Trend from '../../components/chart/Trend'
+import PageLayout from '../../layouts/PageLayout'
 
 const rankList = []
 
@@ -128,7 +101,12 @@ export default {
       rankList
     }
   },
-  components: {Trend, SalesData, HotSearch, RankingList, Bar, MiniProgress, MiniBar, MiniArea, ChartCard}
+  computed: {
+    currUser () {
+      return this.$store.state.account.user
+    }
+  },
+  components: {Trend, SalesData, HotSearch, RankingList, Bar, MiniProgress, MiniBar, MiniArea, ChartCard, PageLayout}
 }
 </script>
 
